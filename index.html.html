@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Para ti Alisson 💛</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: radial-gradient(ellipse at bottom, #0d1b2a 0%, #000 100%);
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      position: relative;
+    }
+
+    /* 🌌 Texto */
+    h1 {
+      position: absolute;
+      top: 10%;
+      font-size: 48px;
+      font-family: 'Brush Script MT', cursive;
+      color: #FFD700;
+      text-shadow: 2px 2px 8px black;
+      text-align: center;
+      z-index: 10;
+    }
+
+    /* 🌻 Flores */
+    .flores {
+      position: absolute;
+      bottom: 5%;
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      justify-content: center;
+      z-index: 5;
+    }
+
+    .flor {
+      width: 120px;
+      opacity: 0;
+      transform: scale(0.5) rotate(-10deg);
+      animation: florecer 1.5s forwards;
+    }
+
+    @keyframes florecer {
+      0% { opacity: 0; transform: scale(0.3) rotate(-20deg); }
+      60% { opacity: 1; transform: scale(1.1) rotate(5deg); }
+      100% { opacity: 1; transform: scale(1) rotate(0deg); }
+    }
+
+    /* 🌟 Estrellas */
+    .estrella {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: titilar 2s infinite alternate;
+    }
+
+    @keyframes titilar {
+      from { opacity: 0.2; }
+      to { opacity: 1; }
+    }
+
+    /* 🌠 Cometas en diagonal */
+    /* 🌠 Cometas en diagonal con cabeza y cola realista */
+.cometa {
+  position: absolute;
+  width: 6px;   /* cabeza más visible */
+  height: 6px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 0 12px 6px white; /* brillo intenso en la cabeza */
+  opacity: 0;
+  transform: rotate(25deg);
+  animation: caer 3s linear infinite;
+}
+
+.cometa::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 150px; /* cola larga */
+  top: -150px;   /* que salga detrás de la cabeza */
+  left: 2px;
+  background: linear-gradient(white, rgba(255,255,255,0));
+  transform: rotate(0deg);
+  filter: blur(2px);
+  opacity: 0.8;
+}
+
+@keyframes caer {
+  0% { 
+    transform: translate(0,0) rotate(25deg) scale(1.1);
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.9;
+  }
+  100% { 
+    transform: translate(800px,800px) rotate(25deg) scale(0.8);
+    opacity: 0;
+  }
+}
+  </style>
+</head>
+<body>
+  <h1>Para Patty,<br> con amor: Richi 💛</h1>
+  <!-- Botón romántico para reproducir música -->
+<div class="music-container">
+  <button id="playMusic">❤️ Reproducir música 🎶</button>
+</div>
+
+<audio id="bgMusic" loop>
+  <source src="musica.mp3.mp3" type="audio/mpeg">
+  Tu navegador no soporta audio.
+</audio>
+
+<script>
+  const button = document.getElementById("playMusic");
+  const music = document.getElementById("bgMusic");
+
+  button.addEventListener("click", () => {
+    music.play();
+    button.style.display = "none"; // el botón desaparece después de presionarlo
+  });
+</script>
+
+<style>
+  .music-container {
+    text-align: center;
+    margin-top: 20px; /* espacio debajo del texto */
+  }
+
+  #playMusic {
+    padding: 15px 30px;
+    background: #ff4da6;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    transition: transform 0.2s, background 0.3s;
+  }
+
+  #playMusic:hover {
+    transform: scale(1.1);
+    background: #e60073;
+  }
+</style>
+
+
+  <!-- 🌻 Flores -->
+  <div class="flores">
+    <img src="girasol1.png" class="flor" style="animation-delay:0.2s">
+    <img src="girasol1.png" class="flor" style="animation-delay:0.6s">
+    <img src="girasol1.png" class="flor" style="animation-delay:1s">
+    <img src="girasol1.png" class="flor" style="animation-delay:1.4s">
+    <img src="girasol1.png" class="flor" style="animation-delay:1.8s">
+    <img src="girasol1.png" class="flor" style="animation-delay:2.2s">
+    <img src="girasol1.png" class="flor" style="animation-delay:2.6s">
+    <img src="girasol1.png" class="flor" style="animation-delay:3s">
+  </div>
+
+  <script>
+    /* 🌟 Estrellas random */
+    for(let i=0;i<100;i++){
+      let estrella=document.createElement("div");
+      estrella.className="estrella";
+      let size=Math.random()*2+1;
+      estrella.style.width=size+"px";
+      estrella.style.height=size+"px";
+      estrella.style.top=Math.random()*window.innerHeight+"px";
+      estrella.style.left=Math.random()*window.innerWidth+"px";
+      document.body.appendChild(estrella);
+    }
+
+    /* 🌠 Cometas diagonales izquierda ➝ derecha */
+    for(let i=0;i<12;i++){
+      let cometa=document.createElement("div");
+      cometa.className="cometa";
+      cometa.style.left=(-200 - Math.random()*300)+"px"; 
+      cometa.style.top=(-200 - Math.random()*400)+"px"; 
+      cometa.style.animationDelay=(Math.random()*6)+"s";
+      cometa.style.animationDuration=(2+Math.random()*3)+"s";
+      document.body.appendChild(cometa);
+    }
+  </script>
+ </body>
+</html>
